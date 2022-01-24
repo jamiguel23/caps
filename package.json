@@ -1,0 +1,23 @@
+{
+  "name": "caps",
+  "version": "1.0.0",
+  "description": "## author",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamiguel23/caps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.4.7"
+  },
+  "bugs": {
+    "url": "https://github.com/jamiguel23/caps/issues"
+  },
+  "homepage": "https://github.com/jamiguel23/caps#readme"
+}
