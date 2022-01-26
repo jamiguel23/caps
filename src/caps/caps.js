@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 3008;
+const PORT = process.env.PORT || 2000;
 
 const router = require('./router')
 

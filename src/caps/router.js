@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 const socketioClient = require('socket.io-client');
-const socket = socketioClient.connect('http://localhost:3008');
+const socket = socketioClient.connect('http://localhost:2000');
 
 
 
