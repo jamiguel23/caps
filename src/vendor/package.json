@@ -1,11 +1,11 @@
 {
-  "name": "hub",
+  "name": "modules",
   "version": "1.0.0",
   "description": "",
-  "main": "hub.js",
+  "main": "driver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node hub.js"
+    "start": "npm start"
   },
   "keywords": [],
   "author": "",

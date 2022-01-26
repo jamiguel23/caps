@@ -1,5 +1,5 @@
 {
-  "name": "modules",
+  "name": "driver",
   "version": "1.0.0",
   "description": "",
   "main": "driver.js",
@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1"
   }
 }

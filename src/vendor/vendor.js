@@ -1,9 +1,11 @@
 'use strict';
 
 // const event = require('../events');
+const URL = 'http://localhost:3008'
 
 const socketioClient = require('socket.io-client');
-const socket = socketioClient.connect('http://localhost:3002');
+const socket = socketioClient.connect(URL);
+const nameSpace = socketioClient.connect(`${URL}/caps`)
 
 
 // socket.on('banana', payload => {
@@ -18,11 +20,11 @@ setInterval(() => {
     address: '1234 Main St'
   }
   console.log('Delivery received', delivery)
-  socket.emit('pickup', delivery) 
+  nameSpace.emit('pickup', delivery) 
 }, 5000)
 
-socket.on('delivered', handleDeliv);
+// nameSpace.on('delivered', handleDeliv);
 
-function handleDeliv(payload) {
-  console.log(`VENDOR: Thank you for delivering ${payload.orderID}`);
-}
+// function handleDeliv(payload) {
+//   console.log(`VENDOR: Thank you for delivering ${payload.orderID}`);
+// }
