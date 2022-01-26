@@ -1,47 +1,42 @@
 'use strict';
 
-const PORT = process.env.PORT || 2000;
-const socketio=require('socket.io')(PORT);
-socketio.on('connection', (socket) => {
-  console.log('CORE', socket.id)
-  console.log('****************');
-})
 
-// const server = socketio(PORT);
-const caps = socketio.of('/caps')
+const socketio = require('socket.io');
 
-caps.on('connection', (socket) => {
+const PORT = process.env.PORT || 3002;
 
-  socket.emit('pickup')
-  // console.log('Connection made', socket.id);
-  socket.on('pickup', (payload) => {
-    console.log('pick');
-    logEvent('pickup', payload);
-    // caps.emit('pickup', payload)
-  })
-  socket.emit('driver-pickup');
+const server = socketio(PORT); 
+const caps = server.of('/caps');
 
-  // socket.on('join', (room) => {
-  //   console.log('created room');
-  //   socket.join(room);
-  // })
-  // socket.emit('banana', {
-  //   data: "banana",
-  // })
+
+caps.on('connection', (socket) =>  {
+  console.log('socket connected');
+
+
+  socket.on('join', room => {
+    socket.join(room);
+  });
+
+  // receive package waiting to be picked up
+  socket.on('pickup', payload => {
+
+    socket.broadcast.emit('pickup', payload);
+    logEvent('pickup', payload)
+  });
+  socket.on('in-transit', payload => {
+    // run logger
+    // socket.emit('in-transit', payload);
+    logEvent('in-transit', payload)
+  });
+  socket.on('delivered', payload => {
+    
+    socket.broadcast.emit('delivered', payload);
+    logEvent('delivered', payload)
+  });
+
+  
+
 });
-
-
-
-// pickup event
-// server.on('connection', (socket) => {
-//   caps.on('pickup', (payload) => {
-//     caps.broadcast.emit('pickup', payload)
-//     logger('pickup', payload);
-//   });
-  // caps.emit('pickup', payload);
-// });
-// In-transit
-// server.on('in-transit', (payload) => logEvent('in-transit', payload));
 
 function logEvent(event, payload) {
   let timestamp = new Date();

@@ -1,28 +1,23 @@
 'use strict';
 
 
-const URL = 'http://localhost:2000'
+const socketClient = require('socket.io-client');
 
-const socketioClient = require('socket.io-client');
-const socket = socketioClient.connect(URL);
-const caps = socketioClient.connect(`${URL}/caps`)
+const socket = socketClient.connect('http://localhost:3002/caps');
 
+socket.on('pickup', payload => {
+  console.log('Picked up order: ', payload.orderID);
 
-// caps.on('pickup', handleDeliv);
-caps.on('driver-pickup', () => {
-  console.log('w/e')
+  setTimeout(() => {
+    socket.emit('in-transit', payload);
+  },2000);
+
+  setTimeout(() => {
+    socket.emit('delivered', payload);
+  }, 4000);
+
+  setTimeout(() => {
+    process.exit();
+  },6000)
 });
 
-
-function handleDeliv(payload){
-
- setTimeout(() => {
-  console.log('driver handling order #', payload.orderID)
-  caps.emit('in-transit', payload)
- }, 1000);
-
-//  setTimeout(() => {
-//    console.log(`DRIVER: delivered ${payload.orderID}`);
-//    socket.emit('delivered', payload)
-//  }, 3000)
-}
