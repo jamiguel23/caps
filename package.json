@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --verbose",
-    "start": "node caps.js"
+    "start": "node hub.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1"
   },
   "bugs": {
     "url": "https://github.com/jamiguel23/caps/issues"
