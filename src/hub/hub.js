@@ -9,7 +9,7 @@ const server = socketio(PORT);
 const caps = server.of('/caps');
 
 const queue = {
-  packages: {},
+  // packages: {},
   // addPackage: function() {},
   // removePackage: function() {},
 }
@@ -35,9 +35,11 @@ caps.on('connection', (socket) =>  {
   });
   socket.on('delivered', payload => {
     
+    logEvent('delivered', payload)
     socket.broadcast.emit('delivered', payload);
     // socket.in(payload.store).emit('delivered', payload);
-    logEvent('delivered', payload)
+    delete queue[payload.orderID];
+    console.log('queue after delivery', queue)
   });
 
 

@@ -25,6 +25,7 @@ setInterval(() => {
 
 
 
+
 socket.on('delivered', handleDeliv);
 
 function handleDeliv(payload) {

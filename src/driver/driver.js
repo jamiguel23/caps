@@ -17,8 +17,8 @@ socket.on('pickup', payload => {
     socket.emit('delivered', payload);
   }, 4000);
 
-  setTimeout(() => {
-    process.exit();
-  },6000)
+  // setTimeout(() => {
+  //   process.exit();
+  // },6000)
 });
 
