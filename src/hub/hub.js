@@ -31,10 +31,10 @@ caps.on('connection', (socket) =>  {
   socket.on('delivered', payload => {
     
     socket.broadcast.emit('delivered', payload);
-    logEvent('delivered', payload)
+    // socket.in(payload.store).emit('delivered', payload);
+    // logEvent('delivered', payload)
   });
 
-  
 
 });
 

@@ -6,13 +6,13 @@ const uuid = require('uuid').v4
 
 const socket = socketClient.connect('http://localhost:3002/caps');
 
-const storeName = '1-206-flowers';
+const storeName = 'acme-widgets';
 
 let payload = {
   store: storeName,
   orderID: uuid(),
-  customer: 'Mike Jones',
-  address: '1234 Main St'
+  customer: 'Axel Loon',
+  address: '5678 Up Ave'
 }
 
 setInterval(() => {

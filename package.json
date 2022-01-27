@@ -17,7 +17,8 @@
   "dependencies": {
     "jest": "^27.4.7",
     "socket.io": "^4.4.1",
-    "socket.io-client": "^4.4.1"
+    "socket.io-client": "^4.4.1",
+    "uuid": "^8.3.2"
   },
   "bugs": {
     "url": "https://github.com/jamiguel23/caps/issues"
