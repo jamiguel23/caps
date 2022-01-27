@@ -8,31 +8,36 @@ const PORT = process.env.PORT || 3002;
 const server = socketio(PORT); 
 const caps = server.of('/caps');
 
+const queue = {
+  packages: {},
+  // addPackage: function() {},
+  // removePackage: function() {},
+}
 
 caps.on('connection', (socket) =>  {
   console.log('socket connected');
 
-
   socket.on('join', room => {
     socket.join(room);
+    console.log(socket.id, 'joined', room, 'room')
   });
 
-  // receive package waiting to be picked up
   socket.on('pickup', payload => {
 
-    socket.broadcast.emit('pickup', payload);
     logEvent('pickup', payload)
+    queue[payload.orderID] = payload
+    console.log('queue after emitting pickup', queue);
+    socket.broadcast.emit('pickup', payload);
   });
   socket.on('in-transit', payload => {
-    // run logger
-    // socket.emit('in-transit', payload);
+    
     logEvent('in-transit', payload)
   });
   socket.on('delivered', payload => {
     
     socket.broadcast.emit('delivered', payload);
     // socket.in(payload.store).emit('delivered', payload);
-    // logEvent('delivered', payload)
+    logEvent('delivered', payload)
   });
 
 

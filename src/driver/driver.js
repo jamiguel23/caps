@@ -6,6 +6,7 @@ const socketClient = require('socket.io-client');
 const socket = socketClient.connect('http://localhost:3002/caps');
 
 socket.on('pickup', payload => {
+  socket.emit('join', payload.store)
   console.log('Picked up order: ', payload.orderID);
 
   setTimeout(() => {

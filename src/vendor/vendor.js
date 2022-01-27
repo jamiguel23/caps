@@ -8,6 +8,8 @@ const socket = socketClient.connect('http://localhost:3002/caps');
 
 const storeName = '1-206-flowers';
 
+socket.emit('join', storeName)
+
 let payload = {
   store: storeName,
   orderID: uuid(),
