@@ -1,6 +1,6 @@
 'use strict';
 
-const handleDeliv = require('../src/modules/vendor')
+const handleDeliv = require('../src/vendor/vendor')
 
 
 describe('testing delivery handler', () =>{
